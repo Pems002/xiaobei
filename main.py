@@ -8,7 +8,6 @@ import time
 # 小北学生 账号密码
 USERNAME = os.getenv("XB_USERNAME")
 PASSWORD = os.getenv("XB_PASSWORD")
-AMAP = os.getenv("AMAP_KEY")
 # 经纬度
 LOCATION = os.getenv("XB_LOCATION")
 # 位置，可选通过接口获取
@@ -97,8 +96,8 @@ def get_location():
 
 
 def get_param(coord):
-    # 体温随机为35.7~36.7
-    temperature = str(random.randint(357, 367) / 10)
+    # 体温随机为35.9~36.7
+    temperature = str(random.randint(359, 367) / 10)
     # 107.807008,26.245838
     rand = random.randint(1111, 9999)
     # 经度
