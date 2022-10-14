@@ -8,6 +8,7 @@ import time
 # 小北学生 账号密码
 USERNAME = os.getenv("XB_USERNAME")
 PASSWORD = os.getenv("XB_PASSWORD")
+AMAP = os.getenv("AMAP_KEY")
 # 经纬度
 LOCATION = os.getenv("XB_LOCATION")
 # 位置，可选通过接口获取
@@ -77,7 +78,7 @@ else:
 def get_location():
     lc = LOCATION.split(',')
     location = lc[0] + ',' + lc[1]
-    url = "https://restapi.amap.com/v3/geocode/regeo?key=8d149166bf515786cbd1f7e8c3dee60b&location=" + location
+    url = "https://restapi.amap.com/v3/geocode/regeo?key={AMAP}&location=" + location
     try:
         result = requests.get(url).text
     except:
