@@ -76,8 +76,8 @@ else:
 
 def get_location():
     lc = LOCATION.split(',')
-    location = lc[1] + ',' + lc[0]
-    url = "https://api.xiaobaibk.com/api/location/?location=" + location
+    location = lc[0] + ',' + lc[1]
+    url = "https://restapi.amap.com/v3/geocode/regeo?key=8d149166bf515786cbd1f7e8c3dee60b&location=" + location
     try:
         result = requests.get(url).text
     except:
@@ -85,10 +85,10 @@ def get_location():
         wxapp_notify('😂由于获取位置信息失败打卡不成功，估计接口服务器崩了吧', '小北打卡失败')
 
     data = json.loads(result)
-    if data['status'] == 0:
-        province = data['result']['addressComponent']['province']
-        city = data['result']['addressComponent']['city']
-        district = data['result']['addressComponent']['district']
+    if data['status'] == '1':
+        province = data['regeocode']['addressComponent']['province']
+        city = data['regeocode']['addressComponent']['city']
+        district = data['regeocode']['addressComponent']['district']
         return '中国-' + province + '-' + city + '-' + district
     else:
         print("位置获取失败,程序终止")
