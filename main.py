@@ -4,6 +4,7 @@ import os
 import random
 import requests
 import time
+import sys
 
 # 小北学生 账号密码
 USERNAME = os.getenv("XB_USERNAME")
@@ -316,6 +317,7 @@ if __name__ == '__main__':
         status = json.loads(respond)['code']
         if status == 200:
             print("恭喜您打卡成功啦！")
+            sys.exit(0)
 
             # server酱
             if SENDKEY != '':
